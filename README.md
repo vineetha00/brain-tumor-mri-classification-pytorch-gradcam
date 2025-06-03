@@ -1,29 +1,33 @@
-# 🧠 Brain Tumor Classification from MRI Scans
+# Brain Tumor Classification with Grad-CAM
 
-This project trains a deep learning model to classify MRI brain scans into 4 categories:
-- Glioma
-- Meningioma
-- Pituitary tumor
-- No tumor
+This project is a capstone deep learning model for classifying brain MRI images into four categories: `glioma`, `meningioma`, `pituitary tumor`, and `no tumor`.
 
 ## 📂 Dataset
-Kaggle: Brain Tumor Classification (MRI)  
-Link: https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset
-
-Folders used:
-- `data/training/`
-- `data/testing/`
-- `data/val/` (created from training split)
+The model uses the [Kaggle Brain MRI Dataset](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset), consisting of 15,000+ images across:
+- Training
+- Validation (created via split)
+- Testing
 
 ## 🧠 Model
-- Backbone: ResNet18
-- Trained using PyTorch
-- Validation Accuracy: ~100%
+- **Architecture:** Pretrained ResNet18
+- **Fine-tuning:** Last few layers updated for 4-class classification
+- **Accuracy:** >99% validation accuracy
 
-## 🔍 Grad-CAM Visualization
-Highlight tumor regions using Grad-CAM. Output saved as `gradcam_output.jpg`.
+## 🔍 Explainability
+Grad-CAM is used to highlight regions of the MRI that influenced predictions.
 
-## 🧪 Run
+![Grad-CAM Example](gradcam_output.jpg)
+
+## 🛠️ Tools
+- PyTorch, Torchvision
+- PIL, Matplotlib
+- Python 3.10 (via pyenv)
+
+## 🧪 Run Locally
 ```bash
-python main.py           # Train model
-python test_gradcam.py   # Run Grad-CAM visualization
+# Train
+python main.py
+
+# Run Grad-CAM
+python test_gradcam.py
+
